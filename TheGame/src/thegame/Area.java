@@ -10,7 +10,7 @@ package thegame;
  * @author Administrator
  */
 public class Area {
-    protected static String entranceRoom() {
+    protected static Room entranceRoom() {
     int num;
         Room entranceRoom;
         entranceRoom = new Room();
@@ -29,20 +29,21 @@ public class Area {
             num = (int) Math.round(((Math.random() * 9)));
             entranceRoom.roomDirections[i] = Directions.getDirection(num);
             }
-        
-        String lookRoom;
-        lookRoom = "You are in: " + entranceRoom.roomName + System.lineSeparator();
-        lookRoom += entranceRoom.roomDescription + System.lineSeparator();
-        lookRoom += "The current exits are: ";
-        for (int i = 0; i <= entranceRoom.numRoomDirections -1;i++) {
-            if (i == entranceRoom.numRoomDirections - 1) {
-                lookRoom += entranceRoom.roomDirections[i];
-            } else {
-            lookRoom += entranceRoom.roomDirections[i] + ", ";    
-            }
-            
-        }
-        return lookRoom;
+
+//        String lookRoom;
+//        lookRoom = "You are in: " + entranceRoom.roomName + System.lineSeparator();
+//        lookRoom += entranceRoom.roomDescription + System.lineSeparator();
+//        lookRoom += "The current exits are: ";
+//        for (int i = 0; i <= entranceRoom.numRoomDirections -1;i++) {
+//            if (i == entranceRoom.numRoomDirections - 1) {
+//                lookRoom += entranceRoom.roomDirections[i];
+//            } else {
+//            lookRoom += entranceRoom.roomDirections[i] + ", ";    
+//            }
+//            
+//        }
+//        System.out.println(lookRoom);
+        return entranceRoom;
     }
 //    
 //    protected String moveRoom() {

@@ -5,7 +5,8 @@
  */
 package blackjack;
 import java.util.ArrayList;
-
+import java.util.Scanner;
+//import java.util.Random();
 /**
  *
  * @author izzis
@@ -15,11 +16,20 @@ public class Player {
     public ArrayList<Card> hand;
     public int chips;
     public String playerName;
+    public int playerID;
+    Scanner playerInput = new Scanner(System.in);
+
+//    public int numPlayers;
+//    
+//    public void setPlayer(int players) {
+//    numPlayers = players;
+//    }
     
     public Player(String name) {
         hand = new ArrayList<Card>();
         chips = 100;
         playerName = name;
+        playerID = 0;
     }
     
     public void hit(Card card) {
