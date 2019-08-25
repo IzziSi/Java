@@ -16,14 +16,19 @@ public class TheGame {
      * @param args the command line arguments
      */
     
-//Need to build Calendar to check birthday vs. date and update player age
+    /*
+    -Need to build Calendar to check birthday vs. date and update player age
+    -build guilds, abilities, setGuild (player class)
+    -create a temp hardcoded map (create Area class "types")
+    -create NPCs
+    */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Type 'New' to create a new character or type your first and last name to log in.");
         String playerInput = input.nextLine();
         
         if (playerInput.toLowerCase().equals("new")) {
-            CreatePlayer.createPlayer();
+            Player.createPlayer();
         } else {
             String[] fullName = playerInput.split(" ");
             for (String name : fullName) {

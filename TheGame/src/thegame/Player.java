@@ -23,18 +23,15 @@ public class Player {
         private int roomNum;
         private String birthday;
         private String description;
+        private int guildID;
         
-        private void player() {
-            
-            firstName = "John";
-            lastName = "Smith";
-            level = 1;
-            experience = 0;
-            race = "Human";
-            hometown = "Narnia";
-            age = 16;
-            roomNum = 0;
-            description = "None";
+    private Player() {
+        guildID = 00;
+        level = 1;
+        experience = 0;
+        age = 16;
+        roomNum = 1;
+        description = "stands here.";
     }
     
     public void setFirstName(String name) {
@@ -44,6 +41,10 @@ public class Player {
 
     public String getFirstName() {
         return firstName;
+    }
+    
+    public void setGuild(int ID) {
+        this.guildID = ID; 
     }
     
     public void setLastName(String name) {
@@ -72,6 +73,7 @@ public class Player {
         this.birthday = outputFormat.format(date);
     }
     
+        
     public void setExperience(double exp) {
         Levels maxExp = new Levels();
         maxExp.levelDetails();
@@ -167,15 +169,82 @@ public class Player {
         return roomNum;
     }
 
-    public String getStats() {
+    public String getStats(Player player) {
         String message;
-        message = "Name: " + firstName + " " + lastName + "\n";
-        message += "Age: " + age + " years old. Born on " + birthday + ".\n";
-        message += "Hometown: " + hometown + "\n";
-        message += "Race: " + race + "\n";
-        message += "Level: " + level + " Experience: " + experience +"%\n";
+        message = "Name: " + this.firstName + " " + this.lastName + "\n";
+        message += "Age: " + this.age + " years old. Born on " + this.birthday + ".\n";
+        message += "Hometown: " + this.hometown + "\n";
+        message += "Race: " + this.race + "\n";
+        message += "Guild: " + this.guildID + "\n";
+        message += "Level: " + this.level + " Experience: " + this.experience +"%\n";
         System.out.println(message);
         return message;
+    }
+
+     protected static void createPlayer() {
+        Scanner input = new Scanner(System.in);
+        String playerInput;
+        Player player = new Player();
+        System.out.println("Choose a first name.");
+        int whileLoopIteration = 0;
+        do {
+            
+            if (whileLoopIteration > 0) {
+                System.out.println("Please only enter alphabetic letters.");
+            }
+            
+            playerInput = input.next();
+            whileLoopIteration++;
+        } while (CommonMethods.chkAsString(playerInput) == false );
+        
+        player.setFirstName(playerInput);
+        
+        System.out.println("Welcome, " + player.getFirstName() + ". What is your last name?");
+        
+        whileLoopIteration = 0;
+        do {
+            if (whileLoopIteration > 0) {
+                System.out.println("Please only enter alphabetic letters.");
+            }
+            playerInput = input.next();
+            whileLoopIteration++;
+        } while (CommonMethods.chkAsString(playerInput) == false );
+        
+        player.setLastName(playerInput);
+        
+        System.out.println(player.getFirstName() + " " + player.getLastName() + ", how old are you?");
+        System.out.println("(Please enter a number from 1-50)");
+        String chkAge = input.next();
+        int playerAge = 0;
+        do {
+            try {
+                playerAge = Integer.parseInt(chkAge);
+            } catch (Exception e) {
+                playerAge = 0;
+            }
+            
+            if (playerAge > 50 || playerAge < 1) {
+                System.out.println("Please enter a number from 1-50");
+                chkAge = input.next();
+            }
+        } while (!CommonMethods.chkAsInteger(chkAge) || chkAge.equals("0"));
+        
+            
+        player.setAge(playerAge);
+        
+        System.out.println("Select a race: Human, Dwarf, Elf, Catpeople, Crabpeople, Gelatinous Cube.");
+        playerInput = input.next();
+        player.checkRace(playerInput);
+        player.setLevel(1);
+        player.setExperience(0);
+        player.setHometown(player.getRace());
+        player.setBirthday(playerAge);
+        player.getStats(player);
+        
+        System.out.println("Character created!");
+        player.setRoomNum(1);
+        Room currentRoom = Area.entranceRoom();
+        Room.look(currentRoom);
     }
 }
 
