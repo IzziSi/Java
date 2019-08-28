@@ -32,6 +32,7 @@ public class Player {
         age = 16;
         roomNum = 1;
         description = "stands here.";
+        System.out.println("I am here!");
     }
     
     public void setFirstName(String name) {

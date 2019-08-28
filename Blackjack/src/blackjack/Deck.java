@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package blackjack;
-import java.util.concurrent.TimeUnit;
 import java.util.Random;
 import java.util.ArrayList;
 /**
@@ -15,9 +14,8 @@ public class Deck {
         public ArrayList<Card> cards;
         
         public Deck() {
-           cards = new ArrayList<Card>();
+           cards = new ArrayList<>();
            String[] Suits = {"Hearts", "Clubs", "Spades","Diamonds"};
-           
            String[] Faces = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9",
                "10","Jack", "Queen", "King"};
 
@@ -31,15 +29,12 @@ public class Deck {
                     cards.add(card);
                 }
            }
-          
-          shuffleDeck();
-          
-       
+         // shuffleDeck();
         }
         
         public void shuffleDeck() {
            ArrayList<Card> shuffledDeck;
-           shuffledDeck = new ArrayList<Card>();
+           shuffledDeck = new ArrayList<>();
            Random rand = new Random();
            int placeholderNum;
            for (int i = cards.size()-1; i >= 0;i--) {
@@ -58,7 +53,7 @@ public class Deck {
         
 
         public void printDeck() {
-            for (int p=0; p < 52; p++) {
+            for (int p=0; p < cards.size(); p++) {
                 System.out.println(
                 cards.get(p).Face + " ( " + 
                 cards.get(p).Value + ") of " +
@@ -67,30 +62,26 @@ public class Deck {
             }
             
         }
-
+            //dealer needs to be dealt last. please fix.
         public void deal(Player[] players, Deck deck) {
             String message = "";
             for (int handsDealt = 0;handsDealt < 2;handsDealt++) {
                            
-                for (int i = 0; i < players.length;i++) {
-                    players[i].hand.add(deck.cards.get(0));
+                for (Player player : players) {
+                    player.hand.add(deck.cards.get(0));
                     deck.cards.remove(0);
-                    message = players[i].playerName + " is dealt";
-                    if (handsDealt == 1 && players[i].playerID == 0) {
-                        message = message + ".";
+                    message = player.playerName + " is dealt";
+                    if (handsDealt == 1 && player.playerID == 0) {
+                        message += ".";
                     } else {
-                        message = message +  " " + players[i].hand.get(handsDealt).Face;
-                        message = message + " of " + players[i].hand.get(handsDealt).Suit;
+                        message += " " + player.hand.get(handsDealt).Face;
+                        message += " of " + player.hand.get(handsDealt).Suit + ".";
                     }
-                        
-                    
                     System.out.println(message);
-                   
                 }
-           
             }
-        
-            message = "All hands have been dealt. ";
+            message = "All hands have been dealt.\nDeck has " + deck.cards.size() + " cards left.";
+            
             
             System.out.println(message);
         

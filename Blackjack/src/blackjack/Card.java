@@ -10,7 +10,9 @@ package blackjack;
  * @author izzis
  */
 public class Card {
+        
     public String Face;
     public Integer Value;
-    public String Suit;
+    public String Suit;     
+       
 }
