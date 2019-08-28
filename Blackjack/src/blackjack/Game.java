@@ -93,7 +93,7 @@ public class Game {
             System.out.println(playerList[index] + " has a total of " + total + ".");
             System.out.println("Hit or stay?");
             String playerInput;
-            
+            //finish hit or stay and calculations
         }
     }
 //    public void stay(Player currentPlayer, Deck currentDeck) {
