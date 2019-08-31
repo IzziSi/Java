@@ -25,7 +25,8 @@ public class Player {
         private String description;
         private int guildID;
         
-    private Player() {
+        
+    public Player() {
         guildID = 00;
         level = 1;
         experience = 0;
@@ -247,5 +248,22 @@ public class Player {
         Room currentRoom = Area.entranceRoom();
         Room.look(currentRoom);
     }
+     
+     public void beginGame() {
+        Scanner input = new Scanner(System.in);
+        //frame.setTextArea("Type 'New' to create a new character or type your first and last name to log in.");
+        System.out.println("Type 'New' to create a new character or type your first and last name to log in.");
+        String playerInput = input.nextLine();
+        
+        if (playerInput.toLowerCase().equals("new")) {
+            Player.createPlayer();
+        } else {
+            String[] fullName = playerInput.split(" ");
+            for (String name : fullName) {
+                System.out.println("Name: " + name);
+                //Temp work around til adding in a database
+            }
+        }
+     }
 }
 

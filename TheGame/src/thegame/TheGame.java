@@ -5,13 +5,14 @@
  */
 package thegame;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
- *
+ *https://www.youtube.com/watch?v=G5yr4sekAI0&vl=en 12:32
  * @author Administrator
  */
 public class TheGame {
-    
+    JFrame window;
     /**
      * @param args the command line arguments
      */
@@ -22,20 +23,11 @@ public class TheGame {
     -create a temp hardcoded map (create Area class "types")
     -create NPCs
     */
+    
+    
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Type 'New' to create a new character or type your first and last name to log in.");
-        String playerInput = input.nextLine();
-        
-        if (playerInput.toLowerCase().equals("new")) {
-            Player.createPlayer();
-        } else {
-            String[] fullName = playerInput.split(" ");
-            for (String name : fullName) {
-                System.out.println("Name: " + name);
-                //Temp work around til adding in a database
-            }
-        }
+//        Player currentPlayer = new Player();
+//        currentPlayer.beginGame();
         
     }
 }
